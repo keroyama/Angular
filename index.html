@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+<title>lesson1</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+<script src="js/myscript.js"></script>
+</head>
+<body>
+	<div ng-controller="mainCtrl">
+		<p>{{users.length}}users.</p>
+		<ul>
+			<li ng-repeat="user in users">
+				{{user.name}}{{user.score}}
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
