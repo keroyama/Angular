@@ -17,8 +17,11 @@
 </head>
 <body>
   <div ng-controller="mainCtrl">
-    <form name="myName" ng-submit="addUser()">
-      <p>Name: <input type="text" name="name" ng-model="user.name"></p>
+    <form novalidate name="myForm" ng-submit="addUser()">
+      <p>Name: <input type="text" name="name" ng-model="user.name" required ng-minlength="5" ng-maxlength="8"></p>
+      <span ng-show="myForm.name.$error.required">Required</span>
+      <span ng-show="myForm.name.$error.minlength">Too short</span>
+      <span ng-show="myForm.name.$error.maxlength">Too long</span>
       <p><input type="submit" value="add"></p>
     </form>
 
