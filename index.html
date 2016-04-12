@@ -3,17 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <title>lesson1</title>
+<style>
+	.black {
+		background-color: #000;
+	}
+	.chara {
+		font-size: 30px;
+	}
+	.space {
+		padding: 30px;
+	}
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
 <script src="js/myscript.js"></script>
 </head>
-<body>
-	<div ng-controller="mainCtrl">
-		<p>{{users.length}}users.</p>
-		<ul>
-			<li ng-repeat="user in users">
-				{{user.name}}{{user.score}}
-			</li>
-		</ul>
+<body ng-controller="MyController">
+	<!--form>
+		<label for="name">名前：</label>
+		<input type="text" id="name" name="name" ng-model="myName">
+		<button ng-click="onclick()">送信</button>
+	</form>
+	<p>{{greeting}}</p>
+
+	<form>
+		<button ng-click="myStyle={backgroundColor: '#f00', color: '#fff'}">赤</button>
+		<button ng-click="myStyle={backgroundColor: '#0f0', color: '#fff'}">緑</button>
+		<button ng-click="myStyle={backgroundColor: '#00f', color: '#fff'}">青</button>
+		<div ng-class="['black', 'chara', 'space']">
+			テスト
+		</div>
+	</form-->
+
+	<form>
+		<label for="show">表示／非表示</label>
+		<input type="checkbox" ng-model="show">
+		<button ng-click="onclick()">背景反転</button>
+	</form>
+	<div id="panel" class="panel panel-default" ng-if="show">
+		テキスト
 	</div>
 </body>
 </html>

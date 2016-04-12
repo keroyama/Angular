@@ -1,11 +1,17 @@
 angular.module('myApp', [])
-.controller('mainCtrl',['$scope', 'UserList', function($scope, UserList){
-  $scope.users = UserList();  
-}])
-.value('UserList', function(){
-  return [
-    {"name":"taguchi","score":58.22},
-    {"name":"yamada","score":18.45},
-    {"name":"kanai","score":24.77}
-  ]
-});
+.controller('MyController',['$scope', function($scope){
+  /*$scope.greeting = 'こんにちわ名無しさん';
+
+  $scope.onclick = function(){
+    $scope.greeting = 'こんんちわ' + $scope.myName + 'さん';
+  };*/
+
+  $scope.show = true;
+
+  $scope.onclick = function(){
+    angular.element(document.getElementById('panel')).css({
+      backgroundColor: '#000',
+      color: '#fff'
+    });
+  };
+}]);
