@@ -1,70 +1,12 @@
 <!DOCTYPE html>
-<html lang="ja" ng-app="myApp">
+<html lang="ja" ng-app>
 <head>
 <meta charset="UTF-8">
-<title>Angular</title>
-<style>
-  .even {
-    background: #ff0;
-  }
-  .odd {
-    background: #f00;
-  }
-</style>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.min.js"></script>
-<script src="js/myscript.js"></script>
+<title>lesson1</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
 </head>
 <body>
-  <div ng-controller="mainCtrl">
-    <form novalidate name="myForm" ng-submit="addUser()">
-      <p>Name: <input type="text" name="name" ng-model="user.name" required ng-minlength="5" ng-maxlength="8"></p>
-      <span ng-show="myForm.name.$error.required">Required</span>
-      <span ng-show="myForm.name.$error.minlength">Too short</span>
-      <span ng-show="myForm.name.$error.maxlength">Too long</span>
-      <p><input type="submit" value="add"></p>
-    </form>
-
-    <pre>{{user|json}}</pre>
-
-    <!--p>{{25 * 500|number}}</p>
-    <p>{{25 * 500|currency}}</p>
-    <p>{{users.length}} users.</p>
-    <p>{{today|date:'yyyy-MM-dd'}}</p>
-
-    <p><input type="text" ng-model="query.name"></p>
-    <ul>
-      <li ng-repeat="user in users|filter:query">
-        {{user.name|uppercase}}{{user.score|number:4}}
-      </li>
-    </ul>
-
-    <ul>
-      <li ng-repeat="user in users|limitTo:5">
-        {{user.name|uppercase}}{{user.score|number:4}}
-      </li>
-    </ul>
-
-    <ul>
-      <li ng-repeat="user in users" ng-class-even="'even'" ng-class-odd="'odd'">
-        {{$index+1}} {{$first}} {{$middle}} {{$last}} {{user.name|uppercase}}{{user.score}}
-      </li>
-    </ul>
-
-    <ul>
-      <li ng-repeat="user in users|orderBy:'-score'|limitTo:3">
-        {{user.name|uppercase}}{{user.score|number:4}}
-      </li>
-    </ul>
-
-    <ul>
-      <li ng-repeat="user in users" ng-controller="userItemCtrl">
-        {{user.name}}{{user.score}}
-        <button ng-click="increment()">+1</button>
-      </li>
-    </ul-->
-  </div>
-</body>
-</html>
+	<input type="text" ng-model="name">
+	{{name}}
 </body>
 </html>
