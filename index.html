@@ -34,13 +34,40 @@
 		</div>
 	</form-->
 
-	<form>
+	<!--form>
 		<label for="show">表示／非表示</label>
 		<input type="checkbox" ng-model="show">
 		<button ng-click="onclick()">背景反転</button>
+		<input type="email" id="mail" name="mail" ng-model="user.mail" ng-init="user.mail = 'kanai@hotmail.com'">
+
+		<select id="season" name="season" ng-model="season" ng-options="season.value as season.name for season in seasons"></select>
 	</form>
 	<div id="panel" class="panel panel-default" ng-if="show">
-		テキスト
+		<div>{{obj}}</div>
 	</div>
+
+	<div ng-switch="season">
+		<span ng-switch-when=""></span>
+	</div-->
+
+	<form name="myForm" ng-submit="onsubmit()" novalidate>
+		<p>
+			<input type="email" name="mail" ng-model="user.email" required>
+			<div ng-messages="myForm.mail.$error" ng-if="myForm.mail.$touched && myForm.mail.$invalid">
+				<span ng-message="required">入力必須</span>
+				<span ng-message="email">正しい形式</span>
+			</div>
+		</p>
+
+		<p>
+			<input type="passwd" name="passwd" ng-model="user.passwd" ng-minlength="6" required>
+			<span ng-show="myForm.passwd.$error.required">パスワードは必須です</span>
+			<span ng-show="myForm.passwd.$error.minlength">パスワードは6文字</span>
+		</p>
+		<p><input type="submit" value="登録" ng-disabled="myForm.$invalid"></p>
+		
+		<textarea name="" ng-model="tweet" ng-change="onchange()" id="" cols="30" rows="10"></textarea>
+		{{count}}
+	</form>
 </body>
 </html>
