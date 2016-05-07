@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>lesson1</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/animate.css" />
 <style>
 	.black {
 		background-color: #000;
@@ -15,9 +17,59 @@
 	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-sanitize.min.js"></script>
 <script src="js/myscript.js"></script>
 </head>
 <body ng-controller="MyController">
+
+	<table class="table">
+	  <tr>
+	    <th ng-click="name=!name;sort('name', name)">名前</th>
+	    <th ng-click="role=!role;sort(mySort, role)">役職</th>
+	    <th ng-click="old =!old; sort('old',  old)">年齢</th>
+	  </tr>
+	  <tr ng-repeat="member in members | orderBy: 'published' | limitTo: len: start">
+	    <td>{{member.name}}</td>
+	    <td>{{member.role}}</td>
+	    <td>{{member.old}}</td>
+	  </tr>
+	</table>
+	<ul class="pagination">
+		<li><a href="#" ng-click="pager(0)">1</a></li>
+		<li><a href="#" ng-click="pager(1)">2</a></li>
+		<li><a href="#" ng-click="pager(2)">3</a></li>
+	</ul>
+
+	<table>
+		<tr>
+			<th>書名</th><th>価格</th><th>出版社</th><th>刊行日</th>
+		</tr>
+		<tr ng-repeat="book in books | orderBy: 'published'">
+			<td>{{book.title}}</td>
+			<td>{{book.price}}</td>
+			<td>{{book.publish}}</td>
+			<td>{{book.published|date}}</td>
+		</tr>
+	</table>
+
+	<ul ng-init="name = 'HogeHoge'">
+		<li>{{name}}</li>
+		<li>{{name|lowercase}}</li>
+		<li>{{name|uppercase}}</li>
+		<li>{{data|json}}</li>
+		<li ng-repeat="url in urls track by $index" ng-bind-html="url|linky:'_blank'"></li>
+	</ul>
+
+	<div>
+		<button ng-click="oninsert()">追加</button>
+		<button ng-click="onremove()">削除</button>
+
+		<ul>
+			<li class="box" ng-repeat="str in data">{{str}}</li>
+		</ul>
+	</div>
+	<br>
 	<!--form>
 		<label for="name">名前：</label>
 		<input type="text" id="name" name="name" ng-model="myName">
@@ -67,7 +119,48 @@
 		<p><input type="submit" value="登録" ng-disabled="myForm.$invalid"></p>
 		
 		<textarea name="" ng-model="tweet" ng-change="onchange()" id="" cols="30" rows="10"></textarea>
-		{{count}}
+		<p>{{count}}</p>
+		
+		<table>
+			<tr ng-repeat="author in authors track by $index">
+				<td>{{author.name}}</td>
+				<td>{{author.gender}}</td>
+				<td>{{author.birth}}</td>
+			</tr>
+		</table>
+
+		<header ng-repeat-start="author in authors">{{author.name}}</header>
+		<p>{{author.gender}}</p>
+		<footer ng-repeat-end>{{author.birth}}</footer>
+
+		<ul>
+			<li ng-repeat="book in books track by $index">{{book}}</li>
+		</ul>
+
+		<!--ul>
+			<li>
+				<div ng-repeat-start="author in authors">
+					<p><input type="radio" ng-model="data.author" ng-value="author.name" id="author.name" name="author">{{author.birth}}</p>
+				</div>
+				<br ng-repeat-end>
+			</li>
+			<li>{{data.author}}</li>
+		</ul-->
+
+		<ul>
+			<li>
+				<div ng-repeat-start="author in authors">
+					<p><input type="checkbox" ng-model="data.author[author.name]" name="author{{author.name}}" ng-true-value="true" ng-false-value="false">{{author.name}}</p>
+				</div>
+				<br ng-repeat-end>
+			</li>
+			<li>{{data.author}}</li>
+		</ul>
+
+		<select name="author" ng-model="data.author" ng-options="author.name for author in authors">
+			<option value="">以下から選択</option>
+		</select>
+
 	</form>
 </body>
 </html>
