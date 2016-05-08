@@ -133,7 +133,7 @@ angular.module('myApp', [])
 angular.module('myApp', [])
 .controller('MyController',['$scope', '$filter', function($scope,$filter){
 
-  $scope.len = 3;
+  /*$scope.len = 3;
   $scope.start = 0;
   $scope.pager = function(page){
     $scope.start = $scope.len * page;
@@ -154,7 +154,9 @@ angular.module('myApp', [])
 
   $scope.sort = function(exp, reverse){
     $scope.members = $filter('orderBy')($scope.members, exp, reverse);
-  };
+  };*/
+
+  $scope.prices = ['3500.1256','9687.1256','7777.589','4570.44','2010.110'];
 }]);
 
 /*angular.module('myApp', ['ngAnimate'])

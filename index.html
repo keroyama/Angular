@@ -22,6 +22,10 @@
 <script src="js/myscript.js"></script>
 </head>
 <body ng-controller="MyController">
+	
+	<ul ng-repeat="price in prices">
+		<li>{{price|number:0}}</li>
+	</ul>
 
 	<table class="table">
 	  <tr>
@@ -29,7 +33,7 @@
 	    <th ng-click="role=!role;sort(mySort, role)">役職</th>
 	    <th ng-click="old =!old; sort('old',  old)">年齢</th>
 	  </tr>
-	  <tr ng-repeat="member in members | orderBy: 'published' | limitTo: len: start">
+	  <tr ng-repeat="member in members | orderBy: 'published' | limitTo: len: start | filter: '鈴木' as filtered">
 	    <td>{{member.name}}</td>
 	    <td>{{member.role}}</td>
 	    <td>{{member.old}}</td>
@@ -40,6 +44,7 @@
 		<li><a href="#" ng-click="pager(1)">2</a></li>
 		<li><a href="#" ng-click="pager(2)">3</a></li>
 	</ul>
+	<p>{{filtered.length}}件</p>
 
 	<table>
 		<tr>
